@@ -21,3 +21,7 @@ async def get_product_by_id(id: int, db: Session = Depends(get_db)):
 @router.post("/products")
 async def create_product(product: ProductResponse, db: Session = Depends(get_db)):
     return ProductController.create_product(product, db)
+
+@router.put("/products/{id}")
+async def update_product(id: int, product: ProductResponse, db: Session = Depends(get_db)):
+    return ProductController.update_product(id, product, db)

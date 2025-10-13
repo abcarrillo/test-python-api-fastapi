@@ -14,3 +14,7 @@ class ProductController:
     @staticmethod
     def create_product(product: ProductResponse, db: Session):
         return ProductService.create_product(product, db)
+    
+    @staticmethod
+    def update_product(id: int, product: ProductResponse, db: Session):
+        return ProductService.update_product(id, product, db)

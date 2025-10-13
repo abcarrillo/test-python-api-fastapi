@@ -14,8 +14,18 @@ class ProductService:
     @staticmethod
     def get_product_by_id(id: int, db: Session):
         result = ProductRepository.get_product_by_id(id, db)
-        return ProductResponse.model_validate(result, from_attributes= True)
+        if result:
+            return ProductResponse.model_validate(result, from_attributes= True)
+        
+        return "Could not find ID"
     
     @staticmethod
     def create_product(product: ProductResponse, db: Session):
         return ProductRepository.create_product(product, db)
+    
+    @staticmethod
+    def update_product(id:int, product: ProductResponse, db: Session):
+        result = ProductRepository.update_product(id, product, db)
+        if result:
+            return ProductResponse.model_validate(result, from_attributes= True)
+        return "Could not find ID" 
