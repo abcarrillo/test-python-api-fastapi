@@ -25,3 +25,7 @@ async def create_product(product: ProductResponse, db: Session = Depends(get_db)
 @router.put("/products/{id}")
 async def update_product(id: int, product: ProductResponse, db: Session = Depends(get_db)):
     return ProductController.update_product(id, product, db)
+
+@router.delete("/products/{id}")
+async def update_product(id: int, product: ProductResponse, db: Session = Depends(get_db)):
+    return ProductController.delete_product(id, product, db)

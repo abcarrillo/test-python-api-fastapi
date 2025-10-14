@@ -36,3 +36,14 @@ class ProductRepository:
             db.commit()
             return db_product
         return None
+    
+    @staticmethod
+    def delete_product(id:int, product: ProductResponse, db: Session):
+        try:
+            db.query(product_model.Product).filter(product_model.Product.id == id).delete()
+        except:
+            print("ERROR")
+            return None
+
+        return "OK"
+        

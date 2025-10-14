@@ -29,3 +29,7 @@ class ProductService:
         if result:
             return ProductResponse.model_validate(result, from_attributes= True)
         return "Could not find ID" 
+    
+    @staticmethod
+    def delete_product(id:int, product: ProductResponse, db: Session):
+        return ProductRepository.delete_product(id, product, db)
